@@ -6,10 +6,12 @@ import Image4 from '../../../media/Frame 18371.png';
 import Image5 from '../../../media/Frame 18372.png';
 import Image6 from '../../../media/IMG-1871.jpg';
 import Background from '../../../media/freee.jpg';
+
+
 const MasonryGallery: React.FC = () => {
   // Array of images
   const images1 = [Image1, Image2, Image3];
-  const images2 = [Image6,, Image5, Image4];
+  const images2 = [Image6, Image5, Image4];
 
   return (
     <div className="mt-4 py-4"
@@ -41,6 +43,8 @@ const MasonryGallery: React.FC = () => {
                   </div>
               </div>
             ))}
+
+            
           </div>
         </div>
     
