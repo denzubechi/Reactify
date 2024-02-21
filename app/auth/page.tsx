@@ -6,7 +6,7 @@ import { FcGoogle } from 'react-icons/fc';
 import Image from 'next/image';
 import Link from 'next/link';
 import Logo from '../../media/Frame 46 (2).png';
-import Logo2 from '../../media/Frame 50.png';
+import Logo2 from '../../media/Frame 49.png';
 
 export default function Auth() {
   const router = useRouter();

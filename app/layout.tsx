@@ -4,8 +4,8 @@ import { ReduxProvider } from '@/redux/provider'
 import { ChakraProvider } from '@chakra-ui/react'
 
 export const metadata: Metadata = {
-  title: 'Reactify • ',
-  description: "",
+  title: 'Reactify • No 1 Solution for students, creators andentrepreneurs',
+  description: "Sell digital products to anyone, anywhere around the world",
   icons: {
     icon: '/favicon.ico',
   },
