@@ -1,13 +1,13 @@
 "use client"
-import { useEffect, useState } from 'react'
+import {useState } from 'react'
 import Image from 'next/image'
 import Logo from '../../../media/Frame 49.png'
+import HeroImg from '../../../media/HeroImage.png'
 
 const Hero = () => {
 
     const [state, setState] = useState(false)
 
-    // Replace javascript:void(0) paths with your paths
     const navigation = [
         { title: "Features", path: "javascript:void(0)" },
         { title: "Integrations", path: "javascript:void(0)" },
@@ -49,7 +49,7 @@ const Hero = () => {
 
     return (
         <div className='relative'>
-            <div className='absolute inset-0 blur-xl h-[580px]' style={{ background: "E6DDFF" }}></div>
+            <div className='absolute inset-0 blur-xl h-[580px]' style={{ background: "linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(232, 121, 249, 0.26) 40.92%, rgba(204, 171, 238, 0) 70.35%)" }}></div>
             <div className='relative'>
                 <header>
                     <div className={`md:hidden ${state ? "mx-2 pb-5" : "hidden"}`}>
@@ -59,11 +59,11 @@ const Hero = () => {
                         <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                             <Brand />
                             <div className={`flex-1 items-center mt-8 md:mt-0 md:flex ${state ? 'block' : 'hidden'} `}>
-                                <ul className="flex-1 justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0">
+                                <ul className="flex-1 justify-center items-center  space-y-6 md:flex md:space-x-6 md:space-y-0">
                                     {
                                         navigation.map((item, idx) => {
                                             return (
-                                                <li key={idx} className="text-gray-700 hover:text-gray-900">
+                                                <li key={idx} className="text-gray-700 lg:text-lg hover:text-gray-900">
                                                     <a href={item.path} className="block">
                                                         {item.title}
                                                     </a>
@@ -72,9 +72,14 @@ const Hero = () => {
                                         })
                                     }
                                 </ul>
-                                <div className="items-center justify-end mt-6 space-y-6 md:flex md:mt-0">
-                                    <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                                <div className="items-center justify-end mt-6 space-y-6 md:flex md:mt-0 ">
+                                    <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-black font-medium  md:inline-flex">
                                         Sign in
+                                    </a>
+                                </div>
+                                <div className="items-center justify-end mt-6 space-y-6 md:flex md:mt-0">
+                                    <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-6 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                                        create account
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                             <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                                         </svg>
@@ -105,23 +110,22 @@ const Hero = () => {
                                 Sed ut perspiciatis unde omnis iste natus voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.
                             </p>
                             <div className='flex items-center gap-x-3 sm:text-sm'>
-                                <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
-                                    Get started
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                        <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                                    </svg>
-                                </a>
-                                <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-gray-700 hover:text-gray-900 font-medium duration-150 md:inline-flex">
-                                    Contact sales
+                                <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-[#3300AD] duration-150 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
+                                    explore
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                         <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                                     </svg>
                                 </a>
                             </div>
                         </div>
-                        <div className='flex-1 hidden md:block'>
-                            {/* Replace with your image */}
-                            <img src="https://raw.githubusercontent.com/sidiDev/remote-assets/c86a7ae02ac188442548f510b5393c04140515d7/undraw_progressive_app_m-9-ms_oftfv5.svg" className="max-w-xl" />
+                        <div className='flex-1  md:block'>
+                      
+                                   <Image
+                                    className="max-w-full h-auto lg:max-w-2xl"
+                                    src={HeroImg}
+                                    alt="NestSite Logo"
+                                    width={600}
+                                />
                         </div>
                     </div>
                 </section>
