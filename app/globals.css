@@ -28,6 +28,20 @@ body::-webkit-scrollbar{
   display: none;
 }
 
+
+
+/* Apply the font to the entire body */
 body {
   font-family: Readex Pro;     
 }
+
+.support{
+  background-color: #f3f5ff;
+}
+.btn{
+  background: #6E0BF0;
+}
+.text-primary{
+  color: #6E0BF0;
+}
+
