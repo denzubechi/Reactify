@@ -71,7 +71,7 @@ const Hero = () => {
                     <div className={`md:hidden ${state ? "mx-2 pb-0" : "hidden"}`}>
                         <Brand />
                     </div>
-                    <nav className={`pb-0 md:text-sm ${state ? "absolute top-0 inset-x-0 bg-white shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-0 md:mt-0 md:relative md:bg-transparent" : ""}`}>
+                    <nav className={`pb-5 lg:pb-0 md:text-sm ${state ? "absolute top-0 inset-x-0 bg-white shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-0 md:mt-0 md:relative md:bg-transparent" : ""}`}>
                         <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                             <Brand />
                             <div className={`flex-1 items-center mt-8 md:mt-0 md:flex ${state ? 'block' : 'hidden'} `}>
