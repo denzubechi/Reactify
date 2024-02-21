@@ -25,7 +25,7 @@ const MasonryGallery: React.FC = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mx-4">
         
             {images1.map((image, index) => (
-              <div className="relative group cursor-pointer">
+              <div key={index} className="relative group cursor-pointer">
                   <div key={index}>
                       <Image src={image} alt="" width={200}  className="h-auto max-w-full rounded-lg" />
                   </div>
@@ -35,7 +35,7 @@ const MasonryGallery: React.FC = () => {
           
          
             {images2.map((image, index) => (
-              <div className="relative group cursor-pointer">
+              <div key={index} className="relative group cursor-pointer">
                   <div key={index}>
                       <Image src={image} alt="" width={200} className="h-auto max-w-full rounded-lg" />
                   </div>
