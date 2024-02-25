@@ -17,7 +17,7 @@ const VerificationPage: React.FC = () => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   
   const toast = useToast();
-  const userEmail = localStorage.getItem('email')
+  const userEmail = ''
    
   console.log(userEmail)
 
