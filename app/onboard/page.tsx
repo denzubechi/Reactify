@@ -21,7 +21,7 @@ const  OnboardingPage: React.FC = () => {
     try {
       setIsUpdating(true); // Set updating status to true when form is submitted
       // Send the updated username to the API
-      const response = await axiosInstance.post('/username', { username: newUsername });
+      const response = await axiosInstance.post('/merchant/username', { username: newUsername });
       toast({
         title: 'Success',
         description: response.data,
