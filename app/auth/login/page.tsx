@@ -98,30 +98,28 @@ export default function Login() {
         }else{
           router.push('/onboarding/username')
         }
-      } else {
-       
+      } else { 
         toast({
           title: 'Error',
-          description: response.data.message,
+          description: response.data.error.message,
           status: 'error',
           position:"top-right",
           duration: 5000,
           isClosable: true,
         });
-        console.log(response.data.message);
+        console.log(response.data.error.message);
       }
     } catch (error:any) {
-     
         // Handle non-Axios errors if necessary
         toast({
           title: 'Error',
-          description: error,
+          description: error.response.data.error,
           status: 'error',
           duration: 5000,
           position:"top-right",
           isClosable: true,
         });
-        console.error('An error occurred:', error);
+        console.error('An error occurred:', error.response.data.error);
       }
      finally {
       setSigningIn(false);

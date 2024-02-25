@@ -96,79 +96,33 @@ export default function SignUp() {
         });
         console.log(user.email)
         router.push('/auth/verify-code');
-      } else if  (response.status === 200) {
-        const user = response.data;
-        dispatch(register({ user: user }) as any);
-        toast({
-          title: 'Success',
-          description: "Signup Successful",
-          status: 'success',
-          duration: 5000,
-          position:"top-right",
-          isClosable: true,
-        });
-        router.push('/auth/verify-code');
-      }
-      else {
-        // Handle other error codes if needed
-        const errorData = response.data.message;
+      } else { 
         toast({
           title: 'Error',
-          description: errorData,
+          description: response.data.error.message,
           status: 'error',
-          duration: 5000,
           position:"top-right",
+          duration: 5000,
           isClosable: true,
         });
-        console.error(response.data.message);
+        console.log(response.data.error.message);
       }
     } catch (error:any) {
-      
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-  
-        if (axiosError.response && axiosError.response.status === 401) {
-          // Cast the response.data to the expected interface
-          const responseData = axiosError.response.data as ApiResponse;
-          const errorMessage = responseData.message || 'Unauthorized';
-          toast({
-            title: 'Error',
-            description: errorMessage,
-            status: 'error',
-            duration: 5000,
-            position:"top-right",
-            isClosable: true,
-          });
-          console.error('Unauthorized Error:', errorMessage);
-        } else {
-          // Handle other errors
-          toast({
-            title: 'Error',
-            description: 'email already registered',
-            status: 'error',
-            duration: 5000,
-            position:"top-right",
-            isClosable: true,
-          });
-          console.error('An error occurred:', axiosError);
-        }
-      } else {
+        // Handle non-Axios errors if necessary
         toast({
           title: 'Error',
-          description: error,
+          description: error.response.data.error,
           status: 'error',
           duration: 5000,
           position:"top-right",
           isClosable: true,
         });
-        console.error('An error occurred:', error);
+        console.error('An error occurred:', error.response.data.error);
       }
-    } finally {
+     finally {
       setSigningIn(false);
     }
   };
-  
- 
 
 
   // Render the SignUp component
