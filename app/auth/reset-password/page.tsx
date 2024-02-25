@@ -8,9 +8,7 @@ import Logo from '../../../media/Frame 46 (2).png';
 import Logo2 from '../../../media/Frame 49.png';
 import { FiEye ,FiEyeOff} from "react-icons/fi";
 import {   useToast} from '@chakra-ui/react';
-
-
-const BACKEND_URL = process.env.BACKEND_URL as string;
+import backendUrl from '@/app/config/api';
 
 const ResetPassword: React.FC = () => {
   const searchParams = useSearchParams();
@@ -68,7 +66,7 @@ const ResetPassword: React.FC = () => {
         return;
       }
 
-      const response = await fetch(`${BACKEND_URL}/auth/reset-password`, {
+      const response = await fetch(`${backendUrl}/merchant/auth/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

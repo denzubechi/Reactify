@@ -14,7 +14,7 @@ import { AxiosError } from 'axios';
 import { FiEye ,FiEyeOff} from "react-icons/fi";
 import {   useToast} from '@chakra-ui/react';
 
-const BACKEND_API_URL = process.env.BACKEND_API_URL as string;
+import backendUrl from '@/app/config/api';
 
 interface FormData {
   email: string;
@@ -72,7 +72,7 @@ export default function Login() {
 
     try {
       const response: AxiosResponse = await axios.post(
-        `http://localhost:5000/auth/login`,
+        `${backendUrl}/merchant/auth/login`,
         {
           email,
           password,
@@ -80,10 +80,11 @@ export default function Login() {
         { withCredentials: true }
       );
 
-      if (response.status === 200) {
+      if ( (response.status === 200)|| (response.status === 201)) {
         const data = response.data;
         const merchant = data.merchant
         dispatch(login({ userInfo: data.merchant }) as any);
+        localStorage.setItem('reartify_token','')
         toast({
           title: 'Success',
           description: "Login Successful",
@@ -98,11 +99,10 @@ export default function Login() {
           router.push('/onboarding/username')
         }
       } else {
-        // Handle other error codes if needed
-        const errorData = response.data.message;
+       
         toast({
           title: 'Error',
-          description: errorData,
+          description: response.data.message,
           status: 'error',
           position:"top-right",
           duration: 5000,
@@ -111,34 +111,7 @@ export default function Login() {
         console.log(response.data.message);
       }
     } catch (error:any) {
-      if (axios.isAxiosError(error)) {
-        const axiosError = error as AxiosError;
-
-        if (axiosError.response && axiosError.response.status === 401) {
-          // Cast the response.data to the expected interface
-          const responseData = axiosError.response.data as ApiResponse;
-          const errorMessage = responseData.message || 'Unauthorized';
-          toast({
-            title: 'Error',
-            description: errorMessage,
-            status: 'error',
-            duration: 5000,
-            position:"top-right",
-            isClosable: true,
-          });
-          console.error('Unauthorized Error:', errorMessage);
-        } else {
-          toast({
-            title: 'Error',
-            description: "Something went wrong",
-            status: 'error',
-            duration: 5000,
-            position:"top-right",
-            isClosable: true,
-          });
-          console.error('An error occurred:', axiosError);
-        }
-      } else {
+     
         // Handle non-Axios errors if necessary
         toast({
           title: 'Error',
@@ -150,40 +123,13 @@ export default function Login() {
         });
         console.error('An error occurred:', error);
       }
-    } finally {
+     finally {
       setSigningIn(false);
     }
   };
 
-  const handleGoogleSignIn = async () => {
-    setSigningInG(true);
-    try {
-      const response = window.open(`${BACKEND_API_URL}/auth/google`, '_self');
-    } catch (error:any) {
-      toast({
-        title: 'Error',
-        description: error,
-        status: 'error',
-        duration: 5000,
-        position:"top-right",
-        isClosable: true,
-      });
-      console.log(error);
-    }
-  };
 
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: 'Error',
-        description: error,
-        status: 'error',
-        duration: 5000,
-        position:"top-right",
-        isClosable: true,
-      });
-    }
-  }, [error]);
+
 
   return (
     <>

@@ -11,6 +11,7 @@ import { IoArrowBackSharp } from "react-icons/io5";
 import Link from 'next/link';
 import { RootState } from '../../../redux/store';
 import axios from 'axios';
+import backendUrl from '@/app/config/api';
 const VerificationPage: React.FC = () => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const authState = useSelector((state: RootState) => state.auth) as any;
@@ -69,7 +70,7 @@ const VerificationPage: React.FC = () => {
     const verificationCode = code.join('');
     console.log(verificationCode)
     try {
-      const response = await axios.post('http://localhost:5000/auth/verify-code', {
+      const response = await axios.post(`${backendUrl}/merchant/auth/verify-code`, {
         email: userEmail,
         verificationCode,
       });
@@ -94,7 +95,7 @@ const VerificationPage: React.FC = () => {
   const handleResendVerificationCode = async () => {
     setResendDisabled(true);
     try {
-      const response = await axios.post('http://localhost:5000/auth/resend-verification-code', {
+      const response = await axios.post(`${backendUrl}/merchant/auth/resend-verification-code`, {
         email: userEmail,
       });
 

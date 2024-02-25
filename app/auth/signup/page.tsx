@@ -16,11 +16,10 @@ import axios from 'axios';
 import {   useToast} from '@chakra-ui/react';
 import 'react-toastify/dist/ReactToastify.css';
 import { AxiosError } from 'axios';
+import backendUrl from '@/app/config/api';
 
 
 
-// Define the backend URL
-const BACKEND_URL = process.env.BACKEND_URL as string;
 
 interface ApiResponse {
   message: string;
@@ -83,8 +82,7 @@ export default function SignUp() {
     };
   
     try {
-      const response = await axios.post(`${BACKEND_URL}/auth/register`, user);
-  
+      const response = await axios.post(`http://localhost:5000/merchant/auth/register`, user);
       if (response.status === 201) {
         const user = response.data.newMerchant;
         dispatch(register({ user: user }) as any);
@@ -125,6 +123,7 @@ export default function SignUp() {
         console.error(response.data.message);
       }
     } catch (error:any) {
+      
       if (axios.isAxiosError(error)) {
         const axiosError = error as AxiosError;
   
@@ -145,7 +144,7 @@ export default function SignUp() {
           // Handle other errors
           toast({
             title: 'Error',
-            description: "Something went wrong",
+            description: 'email already registered',
             status: 'error',
             duration: 5000,
             position:"top-right",
@@ -169,37 +168,8 @@ export default function SignUp() {
     }
   };
   
-  // Handle Google sign-in
-  const handleGoogleSignIn = async () => {
-    try {
-      const response = await axios.get(`${BACKEND_URL}/auth/google`);
-      window.open(response.data.url, '_self');
-    } catch (error:any) {
-      toast({
-        title: 'Error',
-        description: error,
-        status: 'error',
-        position:"top-right",
-        duration: 5000,
-        isClosable: true,
-      });
-      console.log(error);
-    }
-  };
+ 
 
-  // Display a toast message if there is an error
-  useEffect(() => {
-    if (error) {
-      toast({
-        title: 'Error',
-        description: error,
-        status: 'error',
-        position:"top-right",
-        duration: 5000,
-        isClosable: true,
-      });
-    }
-  }, [error]);
 
   // Render the SignUp component
   return (

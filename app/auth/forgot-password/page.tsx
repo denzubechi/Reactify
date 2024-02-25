@@ -7,8 +7,9 @@ import Logo2 from '../../../media/Frame 49.png';
 import { IoArrowBackSharp } from "react-icons/io5";
 import 'react-toastify/dist/ReactToastify.css';
 import {   useToast} from '@chakra-ui/react';
+import backendUrl from '@/app/config/api';
 
-const BACKEND_URL = process.env.BACKEND_URL as string;
+
 
 const ForgotPassword: React.FC = () => {
   const [email, setEmail] = useState<string>('');
@@ -25,7 +26,7 @@ const ForgotPassword: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${BACKEND_URL}/auth/forgot-password`, {
+      const response = await fetch(`${backendUrl}/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +83,7 @@ const ForgotPassword: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${BACKEND_URL}/auth/forgot-password`, {
+      const response = await fetch(`${backendUrl}/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

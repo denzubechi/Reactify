@@ -6,8 +6,8 @@ import  { Metadata } from 'next'
 
 
 export const metadata: Metadata = {
-  title: 'Get started with Nestsite',
-  description: "Create,share and build your stellar world with Nestsite",
+  title: 'Get started with Reartify',
+  description: "Create,share and build your stellar world with Reartify",
   icons: {
     icon: '/favicon.ico',
   },
