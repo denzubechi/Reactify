@@ -82,7 +82,7 @@ export default function SignUp() {
     };
   
     try {
-      const response = await axios.post(`http://localhost:5000/merchant/auth/register`, user);
+      const response = await axios.post(`${backendUrl}/merchant/auth/register`, user);
       if (response.status === 201) {
         const user = response.data.newMerchant;
         dispatch(register({ user: user }) as any);

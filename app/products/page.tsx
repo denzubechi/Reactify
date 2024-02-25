@@ -39,7 +39,7 @@ const Page: React.FC = () => {
   };
 
   return (
-    <div className='py-20'>
+    <div className='py-20 px-2'>
       {/* Refresh button */}
 
       <div className="flex justify-center items-center">
@@ -52,9 +52,9 @@ const Page: React.FC = () => {
               key={index}
               className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md border-gray-200"
             >
-              <Link href="#">
+              <Link href={`/products/${product.id}`} >
                 <img
-                  className="p-8 rounded-md"
+                  className="p-8 rounded-md cursor-pointer"
                   src={product.image}
                   alt="product image"
                 />
