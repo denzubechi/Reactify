@@ -88,14 +88,15 @@ export default function SignUp() {
         dispatch(register({ user: user }) as any);
         toast({
           title: 'Success',
-          description: "Signup Successful",
+          description: "Signup Successful,Check your email for verification.",
           status: 'success',
           duration: 5000,
           position:"top-right",
           isClosable: true,
         });
-        console.log(user.email)
         router.push('/auth/verify-code');
+        console.log(user.email)
+  
       } else { 
         toast({
           title: 'Error',

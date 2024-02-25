@@ -12,11 +12,15 @@ import Link from 'next/link';
 import { RootState } from '../../../redux/store';
 import axios from 'axios';
 import backendUrl from '@/app/config/api';
+import {   useToast} from '@chakra-ui/react';
+
+
 const VerificationPage: React.FC = () => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
   const authState = useSelector((state: RootState) => state.auth) as any;
   const user = authState ? authState.user : null;
   const userEmail = user ? user.user.email : '';
+  const toast = useToast();
 
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const dispatch = useDispatch();
@@ -78,16 +82,45 @@ const VerificationPage: React.FC = () => {
       if (response.status === 200) {
         const data = response.data;
         console.log(data);
-        toast.success('Email verified successfully, Please login to continue');
+        toast({
+          title: 'Success',
+          description: "Email verified successfully, Please login to continue",
+          status: 'success',
+          duration: 5000,
+          position:"top-right",
+          isClosable: true,
+        });
         router.push('/auth/login');
       } else if (response.status === 401) {
-        toast.error('Email not found. Please check your email address.');
+        toast({
+          title: 'Error',
+          description: 'Email not found. Please check your email address.',
+          status: 'error',
+          position:"top-right",
+          duration: 5000,
+          isClosable: true,
+        });
       } else {
-        toast('An error occurred. Please try again later.');
+        
+        toast({
+          title: 'Error',
+          description: 'An error occurred. Please try again later.',
+          status: 'error',
+          position:"top-right",
+          duration: 5000,
+          isClosable: true,
+        });
       }
     } catch (error) {
       console.error('Error during verification:', error);
-      toast.error('Error during verification. Please try again.');
+      toast({
+        title: 'Error',
+        description: 'Error during verification. Please try again.',
+        status: 'error',
+        position:"top-right",
+        duration: 5000,
+        isClosable: true,
+      });
     } finally {
       setVerifying(false);
     }
@@ -102,15 +135,36 @@ const VerificationPage: React.FC = () => {
       if (response.status === 200) {
         const data = response.data;
         console.log(data);
-        toast.success('Verification code resent successfully');
+        
+        toast({
+          title: 'Success',
+          description: "Verification code resent successfully",
+          status: 'success',
+          duration: 5000,
+          position:"top-right",
+          isClosable: true,
+        });
+        
       } else {
-        const errorData = response.data;
-        console.error(errorData);
-        toast.error(errorData.message);
+        toast({
+          title: 'Error',
+          description: response.data,
+          status: 'error',
+          position:"top-right",
+          duration: 5000,
+          isClosable: true,
+        });
       }
-    } catch (error) {
+    } catch (error:any) {
       console.error('Error during resend:', error);
-      toast.error('Error resending verification code. Please try again.');
+      toast({
+        title: 'Error',
+        description: error.message,
+        status: 'error',
+        position:"top-right",
+        duration: 5000,
+        isClosable: true,
+      });
     } finally {
       setResendDisabled(false);
     }
@@ -122,7 +176,6 @@ const VerificationPage: React.FC = () => {
 
   return (
     <>
-      <ToastContainer theme="light" className="toastify" />
 
       <main className="w-full flex">
         

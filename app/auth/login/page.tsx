@@ -83,8 +83,10 @@ export default function Login() {
       if ( (response.status === 200)|| (response.status === 201)) {
         const data = response.data;
         const merchant = data.merchant
+        const token = data.token
         dispatch(login({ userInfo: data.merchant }) as any);
-        localStorage.setItem('reartify_token','')
+        console.log(data)
+        localStorage.setItem('reartify_token',token)
         toast({
           title: 'Success',
           description: "Login Successful",
@@ -96,7 +98,7 @@ export default function Login() {
         if(merchant.username){
             router.push('/dashboard')
         }else{
-          router.push('/onboarding/username')
+          router.push('/onboard')
         }
       } else { 
         toast({

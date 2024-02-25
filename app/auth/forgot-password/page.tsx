@@ -26,7 +26,7 @@ const ForgotPassword: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${backendUrl}/auth/forgot-password`, {
+      const response = await fetch(`${backendUrl}/merchant/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const ForgotPassword: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${backendUrl}/auth/forgot-password`, {
+      const response = await fetch(`${backendUrl}/merchant/auth/forgot-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
