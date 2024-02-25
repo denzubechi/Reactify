@@ -84,8 +84,9 @@ export default function SignUp() {
     try {
       const response = await axios.post(`${backendUrl}/merchant/auth/register`, user);
       if (response.status === 201) {
-        const user = response.data.newMerchant;
-        dispatch(register({ user: user }) as any);
+        const email = user.email
+        console.log(email)
+        localStorage.setItem('email',email)
         toast({
           title: 'Success',
           description: "Signup Successful,Check your email for verification.",
@@ -94,9 +95,8 @@ export default function SignUp() {
           position:"top-right",
           isClosable: true,
         });
-        router.push('/auth/verify-code');
-        console.log(user.email)
-  
+      router.push('/auth/verify-code');
+ 
       } else { 
         toast({
           title: 'Error',

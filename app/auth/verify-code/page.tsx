@@ -1,7 +1,6 @@
 "use client"
 import React, { useState, ChangeEvent, FormEvent, useRef, useEffect,KeyboardEvent } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { ToastContainer, toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
@@ -9,7 +8,6 @@ import Logo from '../../../media/Frame 46 (2).png';
 import Logo2 from '../../../media/Frame 49.png';
 import { IoArrowBackSharp } from "react-icons/io5";
 import Link from 'next/link';
-import { RootState } from '../../../redux/store';
 import axios from 'axios';
 import backendUrl from '@/app/config/api';
 import {   useToast} from '@chakra-ui/react';
@@ -17,10 +15,11 @@ import {   useToast} from '@chakra-ui/react';
 
 const VerificationPage: React.FC = () => {
   const [code, setCode] = useState(['', '', '', '', '', '']);
-  const authState = useSelector((state: RootState) => state.auth) as any;
-  const user = authState ? authState.user : null;
-  const userEmail = user ? user.user.email : '';
+  
   const toast = useToast();
+  const userEmail = localStorage.getItem('email')
+   
+  console.log(userEmail)
 
   const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
   const dispatch = useDispatch();
